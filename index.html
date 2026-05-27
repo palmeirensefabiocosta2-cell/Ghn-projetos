@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>i8ghn - Navegador Web</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a73e8',
+                        secondary: '#202124',
+                        accent: '#4285f4',
+                        light: '#f8f9fa',
+                        dark: '#303134',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light text-secondary font-sans min-h-screen flex flex-col">
+    <!-- Cabeçalho / Barra de Navegação -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <div class="bg-primary text-white font-bold text-xl w-10 h-10 rounded-lg flex items-center justify-center">i8</div>
+                <h1 class="text-xl font-bold text-secondary">i8ghn</h1>
+            </div>
+
+            <!-- Barra de Pesquisa Inteligente -->
+            <div class="flex-1 max-w-2xl mx-6">
+                <div class="relative">
+                    <div class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
+                        <i class="fa fa-search"></i>
+                    </div>
+                    <input type="text" placeholder="Pesquisar no Google ou digite um endereço..." 
+                           class="w-full px-10 py-2.5 rounded-full border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-gray-50 hover:bg-white">
+                    <div class="absolute right-3 top-1/2 -translate-y-1/2 flex gap-2">
+                        <button class="text-gray-500 hover:text-primary"><i class="fa fa-microphone"></i></button>
+                        <button class="text-gray-500 hover:text-primary"><i class="fa fa-camera"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botões de Ação -->
+            <div class="flex items-center gap-4">
+                <button class="text-gray-600 hover:text-primary transition-colors" title="Acesso Rápido">
+                    <i class="fa fa-th-large text-lg"></i>
+                </button>
+                <button class="text-gray-600 hover:text-primary transition-colors" title="Configurações">
+                    <i class="fa fa-cog text-lg"></i>
+                </button>
+                <button class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors">
+                    Entrar
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu de Navegação -->
+        <nav class="bg-gray-50 border-t border-gray-200 px-4 py-2">
+            <div class="container mx-auto flex gap-6 text-sm font-medium">
+                <a href="#" class="text-primary border-b-2 border-primary pb-1 flex items-center gap-2">
+                    <i class="fa fa-home"></i> Início
+                </a>
+                <a href="#" class="text-gray-600 hover:text-primary transition-colors flex items-center gap-2">
+                    <i class="fa fa-globe"></i> Mundo da Internet
+                </a>
+                <a href="#" class="text-gray-600 hover:text-primary transition-colors flex items-center gap-2">
+                    <i class="fa fa-shield"></i> Segurança
+                </a>
+                <a href="#" class="text-gray-600 hover:text-primary transition-colors flex items-center gap-2">
+                    <i class="fa fa-book"></i> Aprender
+                </a>
+                <a href="#" class="text-gray-600 hover:text-primary transition-colors flex items-center gap-2">
+                    <i class="fa fa-cog"></i> Configurações
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="flex-1 container mx-auto px-4 py-8">
+        <!-- Seção de Busca Google -->
+        <section class="text-center mb-16">
+            <div class="mb-8">
+                <div class="inline-block bg-primary text-white font-bold text-4xl px-4 py-2 rounded-lg mb-3">i8ghn</div>
+                <p class="text-gray-600 text-lg">Pesquise com o poder do Google + tudo sobre a Internet</p>
+            </div>
+
+            <div class="max-w-2xl mx-auto mb-8">
+                <div class="relative">
+                    <input type="text" placeholder="O que você quer saber hoje?" 
+                           class="w-full px-12 py-4 rounded-full border border-gray-300 shadow-md focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-lg">
+                    <div class="absolute left-4 top-1/2 -translate-y-1/2 text-primary">
+                        <i class="fa fa-search text-xl"></i>
+                    </div>
+                    <div class="absolute right-4 top-1/2 -translate-y-1/2 flex gap-3">
+                        <button class="text-gray-500 hover:text-primary"><i class="fa fa-microphone text-lg"></i></button>
+                        <button class="text-gray-500 hover:text-primary"><i class="fa fa-camera text-lg"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center gap-4 mb-12">
+                <button class="bg-light hover:bg-gray-200 px-6 py-2 rounded-md text-sm transition-colors shadow-sm">
+                    Pesquisa Google
+                </button>
+                <button class="bg-light hover:bg-gray-200 px-6 py-2 rounded-md text-sm transition-colors shadow-sm">
+                    Estou com sorte
+                </button>
+            </div>
+        </section>
+
+        <!-- Seção: Mundo da Internet -->
+        <section class="mb-16">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-secondary flex items-center gap-3">
+                    <i class="fa fa-globe text-primary"></i> Mundo da Internet
+                </h2>
+                <a href="#" class="text-primary hover:underline text-sm">Ver tudo</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow border border-gray-100">
+                    <div class="bg-blue-100 text-primary w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa fa-question-circle text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">O que é a Internet?</h3>
+                    <p class="text-gray-600 text-sm mb-4">Entenda como surgiu, como funciona e como ela conecta bilhões de pessoas no mundo todo.</p>
+                    <a href="#" class="text-primary font-medium text-sm hover:underline">Ler mais →</a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow border border-gray-100">
+                    <div class="bg-green-100 text-green-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa fa-shield text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Segurança Digital</h3>
+                    <p class="text-gray-600 text-sm mb-4">Dicas essenciais para proteger seus dados, evitar golpes e navegar com privacidade e segurança.</p>
+                    <a href="#" class="text-primary font-medium text-sm hover:underline">Ler mais →</a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow border border-gray-100">
+                    <div class="bg-purple-100 text-purple-600 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa fa-book text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Dicionário Web</h3>
+                    <p class="text-gray-600 text-sm mb-4">Explicações simples de termos: nuvem, cookies, IP, DNS, HTTP, banda larga e muito mais.</p>
+                    <a href="#" class="text-primary font-medium text-sm hover:underline">Ler mais →</a>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow border border-gray-100">
+                    <div class="bg-orange-100 text-orange-500 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                        <i class="fa fa-history text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">História da Rede</h3>
+                    <p class="text-gray-600 text-sm mb-4">A evolução da Internet: da ARPANET até a Web moderna, redes sociais e inteligência artificial.</p>
+                    <a href="#" class="text-primary font-medium text-sm hover:underline">Ler mais →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção: Serviços Google Integrados -->
+        <section class="mb-16">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold text-secondary flex items-center gap-3">
+                    <i class="fa fa-google text-primary"></i> Serviços Google
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+                <a href="#" class="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow border border-gray-100">
+                    <i class="fa fa-envelope text-red-500 text-2xl mb-2"></i>
+                    <p class="text-xs font-medium">Gmail</p>
+                </a>
+                <a href="#" class="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow border border-gray-100">
+                    <i class="fa fa-youtube-play text-red-600 text-2xl mb-2"></i>
+                    <p class="text-xs font-medium">YouTube</p>
+                </a>
+                <a href="#" class="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow border border-gray-100">
+                    <i class="fa fa-cloud text-blue-500 text-2xl mb-2"></i>
+                    <p class="text-xs font-medium">Drive</p>
+                </a>
+                <a href="#" class="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow border border-gray-100">
+                    <i class="fa fa-file-text text-green-600 text-2xl mb-2"></i>
+                    <p class="text-xs font-medium">Docs</p>
+                </a>
+                <a href="#" class="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow border border-gray-100">
+                    <i class="fa fa-map-marker text-red-500 text-2xl mb-2"></i>
+                    <p class="text-xs font-medium">Mapas</p>
+                </a>
+                <a href="#" class="bg-white rounded-lg shadow-sm p-4 text-center hover:shadow-md transition-shadow border border-gray-100">
+                    <i class="fa fa-language text-blue-600 text-2xl mb-2"></i>
+                    <p class="text-xs font-medium">Tradutor</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Seção: Recursos do Navegador -->
+        <section>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-primary/10 text-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-bolt text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Rápido e Leve</h3>
+                    <p class="text-gray-600 text-sm">Carregamento veloz de páginas e baixo consumo de memória, mesmo em conexões lentas.</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-primary/10 text-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-user-secret text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Privacidade Total</h3>
+                    <p class="text-gray-600 text-sm">Bloqueador de anúncios, navegação anônima e controle total dos seus dados de navegação.</p>
+                </div>
+                <div class="text-center">
+                    <div class="bg-primary/10 text-primary w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-paint-brush text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Personalizável</h3>
+                    <p class="text-gray-600 text-sm">Temas, modo escuro, favoritos e configurações adaptadas ao seu jeito de navegar.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-gray-50 border-t border-gray-200 mt-16 py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <div class="bg-primary text-white font-bold w-8 h-8 rounded flex items-center justify-center">i8</div>
+                    <span class="font-bold text-secondary">i8ghn © 2026</span>
+                </div>
+                <div class="flex gap-6 text-sm text-gray-600">
+                    <a href="#" class="hover:text-primary">Termos</a>
+                    <a href="#" class="hover:text-primary">Privacidade</a>
+                    <a href="#" class="hover:text-primary">Ajuda</a>
+                    <a href="#" class="hover:text-primary">Sobre</a>
+                </div>
+                <div class="text-xs text-gray-500">
+                    Desenvolvido para conectar e ensinar sobre a Internet
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
